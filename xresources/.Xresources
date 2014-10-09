@@ -4,4 +4,3 @@ URxvt.scrollBar: False
 URxvt.font: xft:Terminess Powerline:pixelsize=10
 URxvt.boldFont: 
 URxvt.saveLines: 10000
-
