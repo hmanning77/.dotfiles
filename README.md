@@ -19,6 +19,25 @@ Since each package is just a mirror of the files in your home directory, creatin
 Packages
 --------
 
-- *tmux* - Terminal multiplexer. Uses vi keys and powerline
-- *vim* - VIM editor. Personal shortcuts and Vundle packages
-- *xresources* - Solarized colourscheme for URXVT
+- *tmux*: Terminal multiplexer
+  - Use vi keys in scrollback mode
+  - Powerline
+- *vim*: Amazing editor. I use the Vundle plugin manager
+  - Tagbar addon
+  - Solarized colourscheme
+  - Powerline
+  - Custom keybindings
+- *xresources*
+  - Solarized colourscheme for URXVT
+- *zsh*: Personalised shell.
+  - Syntax highlighting
+  - Powerline
+  - Solarized dircolors
+
+Dependencies
+------------
+
+Most packages use other programs. I keep my downloaded code in `~/Software/Source` at present. If you download dependencies elsewhere, you will need to substitude some paths to fit your preferred setup.
+
+- [Powerline](https://github.com/lokaltog/powerline) - Used for customised prompts and statuslines. At present it is installed with pip for use with vim and kept as a local repository for tmux and zsh to source. I need to tidy this up.
+- [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting) - zsh plugin which provides fish-like syntax highlighting
