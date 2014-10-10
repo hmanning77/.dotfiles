@@ -32,7 +32,7 @@ fi
 ###
 
 # Let's try powerline
-source "$HOME/Software/Source/powerline/powerline/bindings/zsh/powerline.zsh"
+source "$HOME/.local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh"
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
