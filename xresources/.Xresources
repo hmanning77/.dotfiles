@@ -1,7 +1,7 @@
 #include ".config/Xresources/solarized"
 
 URxvt.scrollBar: False
-URxvt.font: xft:Terminess Powerline:pixelsize=10
+URxvt.font: xft:Terminess Powerline:pixelsize=10,xft:Source\ Code\ Pro\ for\ Powerline:pixelsize=10
 URxvt.boldFont: 
 URxvt.intensityStyles: True
 URxvt.saveLines: 10000
