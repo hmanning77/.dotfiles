@@ -14,6 +14,8 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'majutsushi/tagbar'
 Plugin 'altercation/vim-colors-solarized'
+Plugin 'wting/rust.vim'
+Plugin 'tpope/vim-vinegar'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -41,7 +43,15 @@ set incsearch
 set hlsearch
 set smartcase
 
+" Ignore octal for inc/decrement with C-a and C-x
+set nrformats-=octal
+
+set hidden
+set backspace=indent,eol,start
 set foldmethod=marker
+set wildmenu
+set scrolloff=3
+set autoread
 
 
 """
@@ -54,12 +64,19 @@ python powerline_setup()
 python del powerline_setup
 
 set laststatus=2
+set noshowmode
+set showtabline=2
+set showcmd
+set number
+
 set ruler
 
 "Syntax highlighting
 syntax enable
 set background=dark
 colorscheme solarized
+
+set listchars=tab:\|\ ,trail:-,extends:>,precedes:<,nbsp:+
 
 
 """
