@@ -1,0 +1,7 @@
+# Ignore MPD status files
+mpd/.config/mpd/mpd.log
+mpd/.config/mpd/pid
+mpd/.config/mpd/state
+mpd/.config/mpd/sticker.sql
+mpd/.config/mpd/tag_cache
+mpd/.ncmpcpp/error.log
