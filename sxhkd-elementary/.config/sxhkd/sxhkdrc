@@ -1,0 +1,29 @@
+super + return
+    urxvtc
+
+super + shift + return
+    urxvtc -e tmux
+
+super + r
+    dmenu_run
+
+super + F5
+    ncmpcpp prev
+
+super + F6
+    ncmpcpp toggle
+
+super + F7
+    ncmpcpp stop
+
+super + F8
+    ncmpcpp next
+
+super + F9
+    ncmpcpp volume -5
+
+super + F10
+    ncmpcpp volume +5
+
+super + shift + F1
+    pkill -SIGUSR1 sxhkd
