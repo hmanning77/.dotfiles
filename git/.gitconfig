@@ -1,0 +1,9 @@
+[user]
+	email = hugh_manning@yahoo.com
+	name = Hugh Manning
+[push]
+	default = simple
+[credential]
+	helper = cache --timeout=3600
+[alias]
+	summary = log --oneline --max-count=20
