@@ -19,6 +19,13 @@ Since each package is just a mirror of the files in your home directory, creatin
 Packages
 --------
 
+- *fonts*: Customised fontcongig options
+  - Enable powerline variation for Terminus
+- *mpd*: Lightweight, background music player
+  - ncmpcpp console client with custom themeing to better suit Solarized
+- *powerline*: For awesome statusbars in the terminal.
+  - Different colourschemes for different applications to make it easy to parse nested interfaces at a glance (i.e. zsh and vim next to each other inside tmux)
+- *sxhkd-elementary*: Custom keybindings since elementary-os doesn't allow you to define your own by default
 - *tmux*: Terminal multiplexer
   - Use vi keys in scrollback mode
   - Powerline
@@ -39,5 +46,6 @@ Dependencies
 
 Most packages use other programs. I keep my downloaded code in `~/Software/Source` at present. If you download dependencies elsewhere, you will need to substitute some paths to fit your preferred setup.
 
-- [Powerline](https://github.com/lokaltog/powerline) - Used for customised prompts and statuslines. At present it is installed with pip for use with vim and kept as a local repository for tmux and zsh to source. I need to tidy this up.
+- [Powerline](https://github.com/lokaltog/powerline) - Used for customised prompts and statuslines. These dotfiles are configured for a pip install
+- [Powerline Fonts](https://github.com/lokaltog/powerline-fonts) - For fancy glyph support in urxvt
 - [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting) - zsh plugin which provides fish-like syntax highlighting
