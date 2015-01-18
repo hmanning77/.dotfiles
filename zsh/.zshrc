@@ -32,7 +32,11 @@ fi
 ###
 
 # Let's try powerline
-source "$HOME/.local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh"
+if [[ $(hostname) == "hugh-pc" ]]; then
+    source "/usr/lib/python3.4/site-packages/powerline/bindings/zsh/powerline.zsh"
+elif [[ $(hostname) == "wanderer" ]]; then
+    source "$HOME/.local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh"
+fi
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
