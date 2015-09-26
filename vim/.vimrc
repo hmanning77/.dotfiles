@@ -16,6 +16,7 @@ Plugin 'majutsushi/tagbar'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'wting/rust.vim'
 Plugin 'tpope/vim-vinegar'
+Plugin 'tomasr/molokai'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -74,7 +75,6 @@ set ruler
 "Syntax highlighting
 syntax enable
 set background=dark
-colorscheme solarized
 
 set listchars=tab:\|\ ,trail:-,extends:>,precedes:<,nbsp:+
 
