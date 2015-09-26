@@ -5,3 +5,15 @@ mpd/.config/mpd/state
 mpd/.config/mpd/sticker.sql
 mpd/.config/mpd/tag_cache
 mpd/.ncmpcpp/error.log
+mpd-hugh-pc/.config/mpd/mpd.log
+mpd-hugh-pc/.config/mpd/pid
+mpd-hugh-pc/.config/mpd/state
+mpd-hugh-pc/.config/mpd/sticker.sql
+mpd-hugh-pc/.config/mpd/tag_cache
+mpd-hugh-pc/.ncmpcpp/error.log
+
+# Ignore VIM files
+*.swp
+*.swo
+*.netrwhist
+

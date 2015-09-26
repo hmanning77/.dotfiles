@@ -74,7 +74,7 @@ set ruler
 
 "Syntax highlighting
 syntax enable
-set background=dark
+set background=light
 
 set listchars=tab:\|\ ,trail:-,extends:>,precedes:<,nbsp:+
 
