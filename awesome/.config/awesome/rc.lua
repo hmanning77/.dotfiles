@@ -11,6 +11,10 @@ local beautiful = require("beautiful")
 local naughty = require("naughty")
 local menubar = require("menubar")
 
+-- Library to print tables for debugging
+local pprint = require("pprint")
+pprint.setup({ wrap_array = true })
+
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
 -- another config (This code will only ever execute for the fallback config)
@@ -34,11 +38,14 @@ do
         in_error = false
     end)
 end
+
+-- Provide a log file for debugging messages
+io.output("/home/hugh/.config/awesome/debug.log")
 -- }}}
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
-beautiful.init("/home/hugh/.config/awesome/themes/diamond/theme.lua")
+beautiful.init("/home/hugh/.config/awesome/themes/custom/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
 terminal = "urxvt"
@@ -96,10 +103,44 @@ myawesomemenu = {
    { "quit", awesome.quit }
 }
 
-mymainmenu = awful.menu({ items = { { "awesome", myawesomemenu, beautiful.awesome_icon },
-                                    { "open terminal", terminal }
-                                  }
-                        })
+function generate_apps_menu()
+    all_entries = menubar.menu_gen.generate()
+    categories_data = menubar.menu_gen.all_categories
+    menu = {}
+    -- Loop over categories and add all apps in that category to a submenu
+    for category_name, category_data in pairs(categories_data) do
+        submenu = {}
+        for _, v in ipairs(all_entries) do
+            if v.category == category_name then
+                table.insert(submenu, {v.name, v.cmdline, v.icon})
+            end
+        end
+        -- If the submenu has items, sort it by name and include it in the menu
+        if table.maxn(submenu) > 0 then
+            --table.insert(menu, {category_data.name, submenu, category_data.icon_name})
+			table.sort(submenu, function(v1, v2) return v1[1] < v2[1] end)
+            table.insert(menu, {category_data.name, submenu})
+        end
+    end
+
+	-- Sort the category submenus by name
+	table.sort(menu, function(v1, v2) return v1[1] < v2[1] end)
+    return menu
+end
+
+mysystemmenu = {
+	{ "update", terminal .. " -hold -title 'System Update' -e /usr/bin/bash -c 'w3m www.archlinux.org; sudo pacman -Syu'" },
+	{ "lock", nil },
+	{ "reboot", "reboot" },
+	{ "poweroff", "poweroff"}
+}
+
+mymenucontents = { items = { { "applications", generate_apps_menu() },
+					 		 { "awesome", myawesomemenu },
+					 		 { "system", mysystemmenu }
+					 	   }
+				 }
+mymainmenu = awful.menu(mymenucontents)
 
 mylauncher = awful.widget.launcher({ image = beautiful.archlinux_icon,
                                      menu = mymainmenu })
@@ -214,8 +255,9 @@ root.buttons(awful.util.table.join(
 
 -- {{{ Key bindings
 globalkeys = awful.util.table.join(
-    awful.key({ modkey,           }, "Left",   awful.tag.viewprev       ),
-    awful.key({ modkey,           }, "Right",  awful.tag.viewnext       ),
+    -- Chaning tags
+    awful.key({ modkey,           }, ",",   awful.tag.viewprev       ),
+    awful.key({ modkey,           }, ".",  awful.tag.viewnext       ),
     awful.key({ modkey,           }, "Escape", awful.tag.history.restore),
 
     awful.key({ modkey,           }, "j",
@@ -233,8 +275,8 @@ globalkeys = awful.util.table.join(
     -- Layout manipulation
     awful.key({ modkey, "Shift"   }, "j", function () awful.client.swap.byidx(  1)    end),
     awful.key({ modkey, "Shift"   }, "k", function () awful.client.swap.byidx( -1)    end),
-    awful.key({ modkey, "Control" }, "j", function () awful.screen.focus_relative( 1) end),
-    awful.key({ modkey, "Control" }, "k", function () awful.screen.focus_relative(-1) end),
+    awful.key({ modkey,           }, "[", function () awful.screen.focus_relative( 1) end),
+    awful.key({ modkey,           }, "]", function () awful.screen.focus_relative(-1) end),
     awful.key({ modkey,           }, "u", awful.client.urgent.jumpto),
     awful.key({ modkey,           }, "Tab",
         function ()
@@ -271,7 +313,15 @@ globalkeys = awful.util.table.join(
                   awful.util.getdir("cache") .. "/history_eval")
               end),
     -- Menubar
-    awful.key({ modkey }, "p", function() menubar.show() end)
+    awful.key({ modkey }, "p", function() menubar.show() end),
+    -- Shortcut keys
+    awful.key({}, "XF86AudioNext", function () awful.util.spawn("mpc next") end),
+    awful.key({}, "XF86AudioPlay", function () awful.util.spawn("mpc toggle") end),
+    awful.key({}, "XF86AudioPrev", function () awful.util.spawn("mpc prev") end),
+    awful.key({}, "XF86AudioStop", function () awful.util.spawn("mpc stop") end),
+    awful.key({}, "XF86AudioRaiseVolume", function () awful.util.spawn("amixer set Master 1%+") end),
+    awful.key({}, "XF86AudioLowerVolume", function () awful.util.spawn("amixer set Master 1%-") end),
+    awful.key({}, "XF86AudioMute", function () awful.util.spawn("amixer set Master toggle") end)
 )
 
 clientkeys = awful.util.table.join(

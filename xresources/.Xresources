@@ -1,7 +1,13 @@
-#include ".config/Xresources/baskerville-ivorylight"
+/* Colourscheme */
+#include "/home/hugh/.config/base16-xresources/base16-atelierforest.dark.xresources"
 
+/* URxvt configuration */
 URxvt.scrollBar: False
-URxvt.font: xft:DejaVu\ Sans\ Mono\ for\ Powerline:size=10
+/* URxvt has problems spacing fonts correctly. The letterspace eases the issue. */
+URxvt.font: xft:Envy\ Code\ R:medium:size=10
+URxvt.letterSpace: -2
+/*URxvt.font: xft:Inconsolata-dz\ for\ Powerline:medium:size=10
+URxvt.letterSpace: -1*/
 URxvt.boldFont: 
 URxvt.intensityStyles: True
 URxvt.saveLines: 10000

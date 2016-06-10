@@ -31,12 +31,19 @@ fi
 ### THEME
 ###
 
-# Let's try powerline
-if [[ $(hostname) == "hugh-pc" ]]; then
-    source "/usr/lib/python3.4/site-packages/powerline/bindings/zsh/powerline.zsh"
-elif [[ $(hostname) == "wanderer" ]]; then
-    source "$HOME/.local/lib/python2.7/site-packages/powerline/bindings/zsh/powerline.zsh"
-fi
+# Prompt
+autoload -U colors && colors
+local lastcmd="%(0?..%F{red}?:%? )"
+local jobcount="%(1j.%F{green}J:%j .)"
+local workingdir="%F{blue}%~%f"
+PROMPT="
+$lastcmd$jobcount$workingdir
+>"
+RPROMPT="%F{magenta}*%f"
+
+# Use base16 with 256 colour support
+BASE16_SHELL="/home/hugh/.config/base16-shell/base16-atelierforest.dark.sh"
+[[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
@@ -57,6 +64,9 @@ alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
 
+alias c='clear'
+
+# Quick removable media management with udisks2
 alias udm='udisksctl mount -b'
 alias udu='udisksctl unmount -b'
 alias uds='udisksctl status'
@@ -65,4 +75,5 @@ alias uds='udisksctl status'
 #   sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
-source "$HOME/Software/Source/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+# Use syntax highlighting
+source "/usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"

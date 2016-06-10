@@ -2,25 +2,34 @@
 """ PLUGINS
 """
 set nocompatible              " be iMproved, required
-filetype off                  " required
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" let Vundle manage Vundle, required
-Plugin 'gmarik/Vundle.vim'
+" Trying out plug.vim as a plugin manager
+call plug#begin('~/.vim/plugged')
 
-" plugin on GitHub repo
-Plugin 'tpope/vim-fugitive'
-Plugin 'majutsushi/tagbar'
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'wting/rust.vim'
-Plugin 'tpope/vim-vinegar'
-Plugin 'tomasr/molokai'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-vinegar'
+Plug 'majutsushi/tagbar'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'mhinz/vim-startify'
 
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
+Plug 'wellle/targets.vim'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-commentary'
+
+Plug 'tweekmonster/braceless.vim'
+Plug 'wting/rust.vim'
+
+Plug 'guns/vim-clojure-static', { 'for': 'clojure' }
+Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
+Plug 'kien/rainbow_parentheses.vim', { 'on': 'RainbowParenthesesActivate' }
+
+Plug 'chriskempson/base16-vim'
+
+call plug#end()
+
+filetype plugin indent on
 
 
 """
@@ -36,33 +45,49 @@ set expandtab
 
 
 """
+""" AUTOCMDS
+"""
+
+" Use braceless.vim for indented languages
+autocmd FileType python BracelessEnable +indent +fold
+
+" Stop netrw buffers from hanging around
+autocmd FileType netrw setl bufhidden=delete
+
+"""
 """ BEHAVIOUR
 """
 
-" Sensible search
+" Sensible search:
+" Start searching as soon as you type
 set incsearch
+" Highlight search matches
 set hlsearch
+" Search is case insensitive unless you use uppercase letters
 set smartcase
 
 " Ignore octal for inc/decrement with C-a and C-x
 set nrformats-=octal
 
+" Allow buffers with unsaved changes to be kept in the background
 set hidden
+" Allow backspace to work over newlines
 set backspace=indent,eol,start
+" Fold at markers if they are present
 set foldmethod=marker
+" Show a menu on the command buffer when there are multiple options
 set wildmenu
+" Keep at least three lines above/below the cursor whenever possible
 set scrolloff=3
+" Automatically read changes made to files outside of vim without asking
 set autoread
+" Wrap lines at word boundaries
+set linebreak
 
 
 """
 """ APPEARANCE
 """
-
-" Set up status bar
-"python from powerline.vim import setup as powerline_setup
-"python powerline_setup()
-"python del powerline_setup
 
 set laststatus=2
 set noshowmode
@@ -74,7 +99,14 @@ set ruler
 
 "Syntax highlighting
 syntax enable
-set background=light
+set background=dark
+let base16colorspace=256
+colorscheme base16-atelierforest
+
+"Status bar
+let g:airline_theme='base16'
+let g:airline_powerline_fonts = 0
+let g:airline#extensions#tabline#enabled = 1
 
 set listchars=tab:\|\ ,trail:-,extends:>,precedes:<,nbsp:+
 
@@ -86,10 +118,17 @@ set listchars=tab:\|\ ,trail:-,extends:>,precedes:<,nbsp:+
 let mapleader=' '
 
 " General purpose toolbox
+" Toggle paste mode; causes vim to enter text as typed (or pasted) rather than
+" autoindenting, etc
 nmap <leader>p :set paste!<CR>
+" Clear search hilighting
 nmap <leader>h :nohlsearch<CR>
+" Toggle line numbers
 nmap <leader>n :set number!<CR>
+" Toggle word wrapping
 nmap <leader>w :set wrap!<CR>
+
+" Summon/dismiss the tagbar window
 nmap <leader>b :TagbarToggle<CR>
 
 " Make j/k behave on screen lines rather than true lines
@@ -101,5 +140,9 @@ nmap <C-j> <C-w><C-j>
 nmap <C-k> <C-w><C-k>
 nmap <C-h> <C-w><C-h>
 nmap <C-l> <C-w><C-l>
+
+" Fast buffer switching
+nmap <C-n> :bn<CR>
+nmap <C-p> :bp<CR>
 
 
