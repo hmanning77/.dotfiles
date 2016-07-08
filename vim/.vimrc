@@ -101,7 +101,7 @@ set ruler
 syntax enable
 set background=dark
 let base16colorspace=256
-colorscheme base16-atelierforest
+colorscheme base16-atelier-forest
 
 "Status bar
 let g:airline_theme='base16'
