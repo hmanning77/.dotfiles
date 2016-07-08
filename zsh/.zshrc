@@ -42,7 +42,7 @@ $lastcmd$jobcount$workingdir
 RPROMPT="%F{magenta}*%f"
 
 # Use base16 with 256 colour support
-BASE16_SHELL="/home/hugh/.config/base16-shell/base16-atelierforest.dark.sh"
+BASE16_SHELL="/home/hugh/.local/share/base16-shell/scripts/base16-atelier-forest.sh"
 [[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
 
 # enable color support of ls and also add handy aliases
