@@ -105,7 +105,7 @@ colorscheme base16-atelier-forest
 
 "Status bar
 let g:airline_theme='base16'
-let g:airline_powerline_fonts = 0
+let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 
 set listchars=tab:\|\ ,trail:-,extends:>,precedes:<,nbsp:+
