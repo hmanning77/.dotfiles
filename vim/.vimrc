@@ -37,11 +37,14 @@ filetype plugin indent on
 """
 set encoding=utf-8
 
-" Use standard tabbing
+" Use standard expanded tabs
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 set expandtab
+
+" Use some automatic tabbing
+set smarttab
 
 
 """
@@ -120,13 +123,11 @@ let mapleader=' '
 " General purpose toolbox
 " Toggle paste mode; causes vim to enter text as typed (or pasted) rather than
 " autoindenting, etc
-nmap <leader>p :set paste!<CR>
+nmap <leader>p :setlocal paste!<CR>
 " Clear search hilighting
 nmap <leader>h :nohlsearch<CR>
 " Toggle line numbers
 nmap <leader>n :set number!<CR>
-" Toggle word wrapping
-nmap <leader>w :set wrap!<CR>
 
 " Summon/dismiss the tagbar window
 nmap <leader>b :TagbarToggle<CR>
@@ -134,6 +135,9 @@ nmap <leader>b :TagbarToggle<CR>
 " Make j/k behave on screen lines rather than true lines
 nnoremap j gj
 nnoremap k gk
+
+" Make Y act consistenly with C, D etc
+nmap Y y$
 
 " Shorter window switching
 nmap <C-j> <C-w><C-j>
@@ -145,4 +149,13 @@ nmap <C-l> <C-w><C-l>
 nmap <C-n> :bn<CR>
 nmap <C-p> :bp<CR>
 
+
+"""
+""" GUI SPECIFIC OPTIONS
+"""
+
+if has("gui_running")
+    " No toolbar, please
+    set guioptions-=T
+endif
 

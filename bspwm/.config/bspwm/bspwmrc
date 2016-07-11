@@ -1,0 +1,32 @@
+#! /usr/bin/zsh
+
+# Set up desktops
+bspc desktop ^1:^1 -n SYSTEM
+bspc monitor ^1 -a WEB CODE
+bspc desktop ^2:^1 -n IM
+bspc monitor ^2 -a DOCS FILES NOTES GAMES
+
+# Desktop 1 is dedicated to Firefox and thunderbird
+bspc desktop ^1:^2 --layout monocle
+bspc rule -a Firefox    desktop=WEB
+bspc rule -a Thunderbird desktop=WEB
+
+# Messaging goes on secondary monitor, first desktop
+bspc rule -a Pidgin     desktop=IM
+bspc rule -a Skype      desktop=IM
+
+bspc rule -a Steam      desktop=GAMES
+
+bspc rule -a Sonata     floating=true
+bspc rule -a Steam      floating=true
+
+# Padding for BAR on top of the screens
+bspc config top_padding         24
+
+bspc config border_width        2
+bspc config window_gap          12
+bspc config split_ratio         0.50
+bspc config borderless_monocle  true
+bspc config gapless_monocle     true
+
+panel &

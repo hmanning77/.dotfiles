@@ -12,27 +12,26 @@ autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 
+
 ###
 ### ENVIRONMENT
 ###
 
-# Add local bin to path
+### Path
 if [ -d "$HOME/.local/bin" ]; then
     typeset -U path
     path=(~/.local/bin $path)
 fi
 
-# Manually fix tmux ignoring 256 color urxvt
-if [[ $(hostname) == wanderer && $TERM == screen ]]; then
-    export TERM=screen-256color;
-fi
 
 ###
-### THEME
+### APPEARANCE
 ###
 
-# Prompt
+### Prompt
 autoload -U colors && colors
+
+# Minimal Prompt
 local lastcmd="%(0?..%F{red}?:%? )"
 local jobcount="%(1j.%F{green}J:%j .)"
 local workingdir="%F{blue}%~%f"
@@ -40,6 +39,12 @@ PROMPT="
 $lastcmd$jobcount$workingdir
 >"
 RPROMPT="%F{magenta}*%f"
+
+# Box Prompt
+#PROMPT="%{$fg_no_bold[blue]%}╒╡%{$fg_bold[black]%}%n%{$fg_no_bold[blue]%}╞═╡%{$fg_bold[black]%}%m%{$fg_no_bold[blue]%}╞═>%{$fg_bold[black]%} %~
+%{$fg_no_bold[blue]%}╘╡%(?.$.%?╞╡$)%{$reset_color%} "
+
+### Colours
 
 # Use base16 with 256 colour support
 BASE16_SHELL="/home/hugh/.local/share/base16-shell/scripts/base16-atelier-forest.sh"
@@ -56,6 +61,10 @@ if [ -x /usr/bin/dircolors ]; then
     alias fgrep='fgrep --color=auto'
     alias egrep='egrep --color=auto'
 fi
+
+# Use syntax highlighting
+source "/usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+
 
 ###
 ### ALIASES
@@ -75,5 +84,24 @@ alias uds='udisksctl status'
 #   sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
-# Use syntax highlighting
-source "/usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+
+###
+### CUSTOM FUNCTIONS
+###
+
+conf() {
+    case $1 in
+        mpd)        $EDITOR ~/.mpdconf;;
+        ncmpcpp)    $EDITOR ~/.ncmpcpp/config;;
+        profile)    $EDITOR ~/.profile;;
+        ranger)     $EDITOR ~/.config/ranger/rc.conf;;
+        tmux)       $EDITOR ~/.tmux.conf;;
+        vim)        $EDITOR ~/.vim/vimrc;;
+        xinitrc)    $EDITOR ~/.xinitrc;;
+        xresources) $EDITOR ~/.Xdefaults && xrdb ~/.Xdefaults;;
+        xdefaults)  $EDITOR ~/.Xdefaults && xrdb ~/.Xdefaults;;
+        zathura)    $EDITOR ~/.config/zathura/zathurarc;;
+        zsh)        $EDITOR ~/.zshrc && source ~/.zshrc;;
+        *)          echo "Unknown application: $1";;
+    esac
+}
