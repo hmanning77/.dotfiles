@@ -42,7 +42,7 @@ RPROMPT="%F{magenta}*%f"
 
 # Box Prompt
 #PROMPT="%{$fg_no_bold[blue]%}╒╡%{$fg_bold[black]%}%n%{$fg_no_bold[blue]%}╞═╡%{$fg_bold[black]%}%m%{$fg_no_bold[blue]%}╞═>%{$fg_bold[black]%} %~
-%{$fg_no_bold[blue]%}╘╡%(?.$.%?╞╡$)%{$reset_color%} "
+#%{$fg_no_bold[blue]%}╘╡%(?.$.%?╞╡$)%{$reset_color%} "
 
 ### Colours
 
@@ -89,19 +89,4 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 ### CUSTOM FUNCTIONS
 ###
 
-conf() {
-    case $1 in
-        mpd)        $EDITOR ~/.mpdconf;;
-        ncmpcpp)    $EDITOR ~/.ncmpcpp/config;;
-        profile)    $EDITOR ~/.profile;;
-        ranger)     $EDITOR ~/.config/ranger/rc.conf;;
-        tmux)       $EDITOR ~/.tmux.conf;;
-        vim)        $EDITOR ~/.vim/vimrc;;
-        xinitrc)    $EDITOR ~/.xinitrc;;
-        xresources) $EDITOR ~/.Xdefaults && xrdb ~/.Xdefaults;;
-        xdefaults)  $EDITOR ~/.Xdefaults && xrdb ~/.Xdefaults;;
-        zathura)    $EDITOR ~/.config/zathura/zathurarc;;
-        zsh)        $EDITOR ~/.zshrc && source ~/.zshrc;;
-        *)          echo "Unknown application: $1";;
-    esac
-}
+# Configuration function deleted because it was messing with zsh
