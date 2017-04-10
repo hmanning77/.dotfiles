@@ -7,6 +7,7 @@ Usage
 -----
 
 ### Quick guide
+* `user@host:~$ apt install stow || pacman -S stow`
 * `user@host:~$ git clone https://github.com/hmanning77/.dotfiles.git`
 * `user@host:~$ cd .dotfiles`
 * `user@host:~/.dotfiles$ stow <package_name>`
@@ -23,29 +24,24 @@ Packages
   - Enable powerline variation for Terminus
 - *mpd*: Lightweight, background music player
   - ncmpcpp console client with custom themeing to better suit Solarized
-- *powerline*: For awesome statusbars in the terminal.
-  - Different colourschemes for different applications to make it easy to parse nested interfaces at a glance (i.e. zsh and vim next to each other inside tmux)
-- *sxhkd-elementary*: Custom keybindings since elementary-os doesn't allow you to define your own by default
 - *tmux*: Terminal multiplexer
   - Use vi keys in scrollback mode
-  - Powerline
 - *vim*: Amazing editor. I use the Vundle plugin manager
   - Tagbar addon
   - Solarized colourscheme
-  - Powerline
   - Custom keybindings
 - *xresources*
-  - Solarized colourscheme for URXVT
+  - Several colourschemes available to be used in .Xresources
+  - Font fixes for URxvt
 - *zsh*: Personalised shell.
+  - Includes ~/.local/bin on $PATH
+  - Uses base16 colour schemes
   - Syntax highlighting
-  - Powerline
-  - Solarized dircolors
 
 Dependencies
 ------------
 
 Most packages use other programs. I keep my downloaded code in `~/Software/Source` at present. If you download dependencies elsewhere, you will need to substitute some paths to fit your preferred setup.
 
-- [Powerline](https://github.com/lokaltog/powerline) - Used for customised prompts and statuslines. These dotfiles are configured for a pip install
-- [Powerline Fonts](https://github.com/lokaltog/powerline-fonts) - For fancy glyph support in urxvt
+- [base16-shell](https://github.com/chris-kempson/base16-shell) - Scripts to set pretty colour schemes in your shell which use the 256 colour space to store shades, allowing schemes like Solarized to work without basic tools putting out weird colours.
 - [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting) - zsh plugin which provides fish-like syntax highlighting
