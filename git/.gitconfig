@@ -7,3 +7,5 @@
 	helper = cache --timeout=3600
 [alias]
 	summary = log --oneline --max-count=20
+[core]
+	autocrlf = input

@@ -37,7 +37,7 @@ local jobcount="%(1j.%F{green}J:%j .)"
 local workingdir="%F{blue}%~%f"
 PROMPT="
 $lastcmd$jobcount$workingdir
->"
+> "
 RPROMPT="%F{magenta}*%f"
 
 # Box Prompt

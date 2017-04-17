@@ -103,7 +103,11 @@ set ruler
 "Syntax highlighting
 syntax enable
 set background=dark
-let base16colorspace=256
+" Use base16colorspace=256 when base16-shell is in use to modify the 256
+" colorspace
+"let base16colorspace=256
+" Use set termguicolors when the terminal supports true color
+set termguicolors
 colorscheme base16-atelier-forest
 
 "Status bar
