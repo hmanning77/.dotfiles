@@ -3,7 +3,6 @@
 """
 set nocompatible              " be iMproved, required
 
-" Trying out plug.vim as a plugin manager
 call plug#begin('~/.vim/plugged')
 
 Plug 'tpope/vim-fugitive'
