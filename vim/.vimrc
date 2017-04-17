@@ -107,7 +107,7 @@ set background=dark
 "let base16colorspace=256
 " Use set termguicolors when the terminal supports true color
 set termguicolors
-colorscheme base16-atelier-forest
+colorscheme base16-tomorrow
 
 "Status bar
 let g:airline_theme='base16'
@@ -147,11 +147,6 @@ nmap <C-j> <C-w><C-j>
 nmap <C-k> <C-w><C-k>
 nmap <C-h> <C-w><C-h>
 nmap <C-l> <C-w><C-l>
-
-" Fast buffer switching
-nmap <C-n> :bn<CR>
-nmap <C-p> :bp<CR>
-
 
 """
 """ GUI SPECIFIC OPTIONS
