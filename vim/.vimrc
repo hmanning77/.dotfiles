@@ -107,11 +107,11 @@ set background=dark
 "let base16colorspace=256
 " Use set termguicolors when the terminal supports true color
 set termguicolors
-colorscheme base16-tomorrow
+colorscheme base16-tomorrow-night
 
 "Status bar
 let g:airline_theme='base16'
-let g:airline_powerline_fonts = 1
+let g:airline_powerline_fonts = 0
 let g:airline#extensions#tabline#enabled = 1
 
 set listchars=tab:\|\ ,trail:-,extends:>,precedes:<,nbsp:+
